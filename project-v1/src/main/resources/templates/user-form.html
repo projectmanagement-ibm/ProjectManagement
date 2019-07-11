@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+	
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>Project Management System</title>
+</head>
+<body>
+<h2 class="text-center">User Form</h2> 
+<div class="container">
+<form action="#" th:action="@{users/save}" th:object="${user}">
+
+	<div class="ui-field-contain">
+		
+		<input th:field="*{firstName}" name="firstName" id="firstName" data-clear-btn="true" value="" placeholder="First Name" required type="text"/>
+	</div>
+	
+	
+	<div class="ui-field-contain">
+		
+		<input th:field="*{lastName}"  name="lastName" id="lastName" data-clear-btn="true" value="" placeholder="Last Name" required type="text"/>
+	</div>
+	
+	
+	<div class="ui-field-contain">
+		
+		<input th:field="*{contact}" name="contact" id="contact" data-clear-btn="true" value="" placeholder="Contact" required type="text"/>
+	</div>
+
+	<div class="ui-field-contain">
+		
+		<input th:field="*{email}"  name="email" id="email" data-clear-btn="true" value="" placeholder="Email" required="true" type="text"/>
+	</div>
+	
+	<div class="ui-field-contain">
+	
+		<input th:field="*{address}"  name="address" id="address" data-clear-btn="true" value="" placeholder="Address" required="true" type="text"/>
+	</div>
+	
+	
+	<div class="ui-input-btn ui-btn ui-corner-all">
+		Submit
+		<input data-enhanced="true" type="submit" value="Submit" id="button-1"/>
+	</div>
+</form>
+</div>
+
+</body>
+</html>

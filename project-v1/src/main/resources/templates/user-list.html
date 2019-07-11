@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Project Management System</title>
+</head>
+<body>
+
+<a th:href="@{/users/add}" class="btn btn-dark">Add</a>
+
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Contact</th>
+				<th>Email</th>
+				<th>Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user:${userList}">
+				<td th:text="${student.firstName}"></td>
+				<td th:text="${student.lastName}"></td>
+				<td th:text="${student.contact}"></td>
+				<td th:text="${student.email}"></td>
+				<td th:text="${student.address}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
