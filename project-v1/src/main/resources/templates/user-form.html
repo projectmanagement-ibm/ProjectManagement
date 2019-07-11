@@ -23,8 +23,8 @@
 <body>
 <h2 class="text-center">User Form</h2> 
 <div class="container">
-<form action="#" th:action="@{users/save}" th:object="${user}">
-
+<form action="#" th:action="@{save}" th:object="${user}">
+	<input th:field="*{id}" name="firstName" id="id" data-clear-btn="true" value=""  hidden>
 	<div class="ui-field-contain">
 		
 		<input th:field="*{firstName}" name="firstName" id="firstName" data-clear-btn="true" value="" placeholder="First Name" required type="text"/>
