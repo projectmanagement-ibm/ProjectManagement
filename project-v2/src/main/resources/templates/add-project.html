@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container" >
+
+<h2>Project Form</h2><br>
+
+<form action="#" th:action="@{/projects/save}" th:object="${project}" method="post">
+
+
+	<input th:field="*{id}"  type="text"  class="form-control" hidden/><br>
+	
+	
+	project Name:
+	<input th:field="*{name}" placeholder="projectname" type="text"  class="form-control" required=true/><br>
+		
+	Project Desciption:	
+	<input th:field="*{projectDescripion}" placeholder="projectdesciption" type="text" class="form-control" required=true/><br>
+
+     Start Date
+	<input th:field="*{startDate}" placeholder="startDate" type="date" class="form-control" required=true 
+	    min="2019-07-09" max="2020-12-31"
+	/><br>
+	
+	End Date
+	<input th:field="*{endDate}" placeholder="endDate" type="date" class="form-control" required=true
+	  min="2019-07-19" max="2020-12-31"
+	/><br>
+	
+	Status:
+	<br>
+	  <input th:field="*{status}" type="radio" value="incomplete" required=true/> incomplete<br>
+      <input th:field="*{status}" type="radio" value="inprogress"  /> inprogress<br>
+      <input th:field="*{status}" type="radio"  value="completed" /> completed<br> 
+	    
+	
+	</br>
+	<input type="submit" value="Save" />
+	</form>
+	</br>
+	<a th:href="@{/projects/list}">Back To Project List</a>
+	</div>
+</body>
+</html>
