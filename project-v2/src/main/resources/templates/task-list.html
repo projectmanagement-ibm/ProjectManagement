@@ -80,7 +80,7 @@
 
 			<div class="content">
 				<div class="container-fluid">
-					<a th:href="@{/tasks/addTask}" class="btn btn-primary btn-round btn-lg">Add
+					<a th:href="@{/tasks/addTask(id=${pId})}" class="btn btn-primary btn-round btn-lg">Add
 						Task </a>
 					<div class="row">
 						<div class="col-md-12">
@@ -110,7 +110,6 @@
 													<td th:text="${tempTask.startDate}" />
 													<td th:text="${tempTask.endDate}" />
 													<td th:text="${tempTask.status}" />
-
 													<td><a
 														th:href="@{/tasks/updateTask(id=${tempTask.id})}"
 														class="btn btn-primary btn-sm"> Update </a> <a

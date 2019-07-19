@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.projectv1.entity.Task;
+import com.example.projectv1.entity.User;
 
 
 
@@ -17,5 +18,6 @@ public interface TaskService {
 	
 	public void delete(int id);
 	
+	List<Task> findByProjectId(int id);
 
 }

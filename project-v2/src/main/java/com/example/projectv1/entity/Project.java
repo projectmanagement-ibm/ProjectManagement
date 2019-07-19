@@ -21,7 +21,7 @@ public class Project implements Serializable {
 	@Column(name="name")
 	private String name;
 	@Column(name="project_description")
-	private String projectDescripion;
+	private String projectDescription;
 	@Column(name="start_date")
 	private Date startDate;
 	@Column(name="end_date")
@@ -37,7 +37,7 @@ public class Project implements Serializable {
 		super();
 		this.id = id;
 		this.name = name;
-		this.projectDescripion = projectDescripion;
+		this.projectDescription = projectDescripion;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.status = status;
@@ -59,12 +59,12 @@ public class Project implements Serializable {
 		this.name = name;
 	}
 
-	public String getProjectDescripion() {
-		return projectDescripion;
+	public String getProjectDescription() {
+		return projectDescription;
 	}
 
-	public void setProjectDescripion(String projectDescripion) {
-		this.projectDescripion = projectDescripion;
+	public void setProjectDescription(String projectDescripion) {
+		this.projectDescription = projectDescripion;
 	}
 
 	public Date getStartDate() {
@@ -93,7 +93,7 @@ public class Project implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", name=" + name + ", projectDescripion=" + projectDescripion + ", startDate="
+		return "Project [id=" + id + ", name=" + name + ", projectDescription=" + projectDescription + ", startDate="
 				+ startDate + ", endDate=" + endDate + ", status=" + status + "]";
 	}
 

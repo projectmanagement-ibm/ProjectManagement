@@ -32,12 +32,18 @@ public class Task {
 
 	@Column(name = "status")
 	private String status;
+	
+	
+	@Column(name="project_id")
+	private int projectId;
 
 	public Task() {
 		super();
 	}
 
-	public Task(int id, String name, String description, Date startDate, Date endDate, String status) {
+	
+
+	public Task(int id, String name, String description, Date startDate, Date endDate, String status, int projectId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -45,7 +51,22 @@ public class Task {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.status = status;
+		this.projectId = projectId;
 	}
+
+
+
+	public int getProjectId() {
+		return projectId;
+	}
+
+
+
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
+
 
 	public int getId() {
 		return id;

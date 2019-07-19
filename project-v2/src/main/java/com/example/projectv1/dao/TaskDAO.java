@@ -15,4 +15,6 @@ public interface TaskDAO {
 	
 	public Task findById(int id);
 
+	List<Task> findByProjectId(int id);
+
 }

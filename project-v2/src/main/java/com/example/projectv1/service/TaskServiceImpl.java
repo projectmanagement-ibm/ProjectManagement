@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.projectv1.dao.TaskDAO;
 import com.example.projectv1.entity.Task;
+import com.example.projectv1.entity.User;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -50,5 +51,13 @@ public class TaskServiceImpl implements TaskService {
 		// TODO Auto-generated method stub
 		taskDAO.delete(id);
 	}
+
+	@Override
+	public List<Task> findByProjectId(int id) {
+		// TODO Auto-generated method stub
+		return taskDAO.findByProjectId(id);
+	}
+
+	
 
 }

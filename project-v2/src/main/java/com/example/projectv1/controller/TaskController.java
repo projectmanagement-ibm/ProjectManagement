@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.projectv1.entity.Task;
 import com.example.projectv1.service.TaskService;
 
-
 @Controller
-@RequestMapping("/tasks") 
+@RequestMapping("/tasks")
 public class TaskController {
-	
+
 	private TaskService taskService;
 
 	@Autowired
@@ -28,56 +28,57 @@ public class TaskController {
 		super();
 		this.taskService = taskservice;
 	}
-	
-	
+
 	@GetMapping("/list")
-	public String getAllTask(Model theModel)
-	{
+	public String getAllTask(Model theModel) {
 		theModel.addAttribute("taskList", taskService.findAll());
-		
+
 		return "task-list";
 	}
-	
+
 	@RequestMapping("/addTask")
-	public String addTask(Model theModel)
-	{
+	public String addTask(@RequestParam("id") int projectId, Model theModel) {
 		Task task = new Task();
+		task.setProjectId(projectId);
+
 		theModel.addAttribute("task", task);
 		return "add-task";
 	}
-	
+
 	@RequestMapping("/saveTask")
-	public String saveTask(@ModelAttribute("task") @Valid Task theTask,
-			BindingResult bindingResult) {
-		
+	public String saveTask(@ModelAttribute("task") @Valid Task theTask, BindingResult bindingResult) {
+
 		if (bindingResult.hasErrors()) {
 			return "add-task";
+		} else {
+
+			taskService.save(theTask);
 		}
-		else {		
-	
-		taskService.save(theTask);
-		}
-		
+
 		return "redirect:/tasks/list";
 	}
-	
+
 	@RequestMapping("/updateTask")
-	public String updateTask(@RequestParam("id") int id,Model theModel)
-	{
-		
+	public String updateTask(@RequestParam("id") int id, Model theModel) {
+
 		Task task = taskService.findById(id);
-		
+
 		theModel.addAttribute("task", task);
 		return "add-task";
 	}
-	
+
 	@RequestMapping("/deleteTask")
-	public String deleteTask(@RequestParam("id") int id)
-	{
+	public String deleteTask(@RequestParam("id") int id) {
 		taskService.delete(id);
 		return "redirect:/tasks/list";
 	}
-	
+
+	@RequestMapping("/findByProjectId")
+	public String findByProjectId(@RequestParam("id") int id, Model theModel) {
+		theModel.addAttribute("taskList", taskService.findByProjectId(id));
+		theModel.addAttribute("pId", id);
+		return "task-list";
+
+	}
 
 }
-
