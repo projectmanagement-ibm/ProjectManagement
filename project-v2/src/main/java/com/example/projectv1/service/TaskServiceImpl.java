@@ -58,6 +58,11 @@ public class TaskServiceImpl implements TaskService {
 		return taskDAO.findByProjectId(id);
 	}
 
+	@Override
+	public List<User> findAllTeamLeader() {
+		// TODO Auto-generated method stub
+		return taskDAO.findAllTeamLeader();
+	}
 	
 
 }

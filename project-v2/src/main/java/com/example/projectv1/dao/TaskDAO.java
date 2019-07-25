@@ -17,4 +17,6 @@ public interface TaskDAO {
 
 	List<Task> findByProjectId(int id);
 
+	List<User> findAllTeamLeader();
+
 }

@@ -56,6 +56,11 @@
 							<p>Tasks</p>
 					</a></li>
 
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{/subtasks/list}"> <i class="material-icons">content_paste</i>
+							<p>Subtasks</p>
+					</a></li>
+
 				</ul>
 			</div>
 		</div>
@@ -122,12 +127,25 @@
 
 										</div>
 									</div>
-									
-									
-									
-											<input th:field="*{projectId}" type="number" class="form-control"
-												required hidden>
-										
+
+
+									<div>
+										<input th:field="*{projectId}" type="number"
+											class="form-control" required hidden>
+									</div>
+
+
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="bmd-label-floating">Assigned To</label> <select
+												th:field="*{userId}" class="form-control" required>
+
+												<option th:each="teamLeader : ${teamLeaders}"
+													th:value="${teamLeader.id}" th:text="${teamLeader.email}"></option>
+											</select>
+
+										</div>
+									</div>
 							</div>
 							<button type="submit" class="btn btn-primary ">Save</button>
 							<div class="clearfix"></div>

@@ -71,6 +71,11 @@
 							<p>Tasks</p>
 					</a></li>
 
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{/subtasks/list}"> <i class="material-icons">content_paste</i>
+							<p>Subtasks</p>
+					</a></li>
+
 				</ul>
 			</div>
 		</div>
@@ -80,8 +85,8 @@
 
 			<div class="content">
 				<div class="container-fluid">
-					<a th:href="@{/tasks/addTask(id=${pId})}" class="btn btn-primary btn-round btn-lg">Add
-						Task </a>
+					<a th:href="@{/tasks/addTask(id=${pId})}"
+						class="btn btn-primary btn-round btn-lg">Add Task </a>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -103,10 +108,12 @@
 											<tbody>
 
 												<tr th:each="tempTask : ${taskList}">
-
-													<td th:text="${tempTask.name}" />
-													<td th:text="${tempTask.description}" />
+													<td><a
+														th:href="@{/subtasks/findByTaskId(id=${tempTask.id})}"
+														th:text="${tempTask.name}"></a></td>
 													
+													<td th:text="${tempTask.description}" />
+
 													<td th:text="${tempTask.startDate}" />
 													<td th:text="${tempTask.endDate}" />
 													<td th:text="${tempTask.status}" />

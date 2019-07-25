@@ -19,5 +19,8 @@ public interface TaskService {
 	public void delete(int id);
 	
 	List<Task> findByProjectId(int id);
+	
+	List<User> findAllTeamLeader();
+
 
 }

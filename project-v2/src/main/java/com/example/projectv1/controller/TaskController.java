@@ -1,5 +1,6 @@
 package com.example.projectv1.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.projectv1.entity.Task;
+import com.example.projectv1.entity.User;
 import com.example.projectv1.service.TaskService;
 
 @Controller
@@ -42,6 +44,10 @@ public class TaskController {
 		task.setProjectId(projectId);
 
 		theModel.addAttribute("task", task);
+		
+		List<User> teamLeaders = taskService.findAllTeamLeader(); 
+		
+		theModel.addAttribute("teamLeaders", teamLeaders);
 		return "add-task";
 	}
 

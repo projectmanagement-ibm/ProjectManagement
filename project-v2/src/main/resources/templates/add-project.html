@@ -55,6 +55,11 @@
 							<p>Tasks</p>
 					</a></li>
 
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{/subtasks/list}"> <i class="material-icons">content_paste</i>
+							<p>Subtasks</p>
+					</a></li>
+
 				</ul>
 			</div>
 		</div>
@@ -71,7 +76,8 @@
 								<p class="card-category">fill all the required details</p>
 							</div>
 							<div class="card-body">
-								<form action="#" th:action="@{/projects/save}" th:object="${project}">
+								<form action="#" th:action="@{/projects/save}"
+									th:object="${project}">
 
 									<input th:field="*{id}" type="text" class="form-control" hidden>
 
@@ -87,8 +93,8 @@
 									<div class="col-md-8">
 										<div class="form-group">
 											<label class="bmd-label-floating">Description</label>
-											<textArea th:field="*{projectDescription}" class="form-control"
-												required />
+											<textArea th:field="*{projectDescription}"
+												class="form-control" required />
 										</div>
 									</div>
 									<div class="col-md-4">
@@ -114,6 +120,20 @@
 												<option value="InProcess">Pending</option>
 												<option value="NotStarted">Not Started</option>
 
+											</select>
+
+										</div>
+									</div>
+
+
+
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="bmd-label-floating">Assigned To</label> <select
+												th:field="*{userId}" class="form-control" required>
+
+												<option th:each="manager : ${managers}"
+													th:value="${manager.id}" th:text="${manager.email}"></option>
 											</select>
 
 										</div>

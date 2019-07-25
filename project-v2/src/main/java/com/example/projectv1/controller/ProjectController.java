@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.projectv1.entity.Project;
+import com.example.projectv1.entity.User;
 import com.example.projectv1.service.ProjectService;
 
 
@@ -44,6 +45,9 @@ public class ProjectController {
 	{
        Project theProject = new Project();
        theModel.addAttribute("project", theProject);
+       
+       List<User>  managers = projectService.findAllManager();
+       theModel.addAttribute("managers", managers);
   		return "add-project";
   		
 	}

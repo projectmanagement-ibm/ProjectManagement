@@ -28,12 +28,15 @@ public class Project implements Serializable {
 	private Date endDate;
 	@Column(name="status")
 	private String status;
+	
+	@Column(name="user_id")
+	private int userId;
 
 	public Project() {
 		super();
 	}
 
-	public Project(int id, String name, String projectDescripion, Date startDate, Date endDate, String status) {
+	public Project(int id, String name, String projectDescripion, Date startDate, Date endDate, String status, int userId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,6 +44,7 @@ public class Project implements Serializable {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.status = status;
+		this.userId = userId;
 	}
 
 	public int getId() {
@@ -89,6 +93,15 @@ public class Project implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@Override

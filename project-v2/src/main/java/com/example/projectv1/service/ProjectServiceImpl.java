@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.projectv1.dao.ProjectDAOImpl;
 import com.example.projectv1.dao.ProjectRepositoryDAO;
 import com.example.projectv1.entity.Project;
+import com.example.projectv1.entity.User;
 
 
 
@@ -15,13 +17,15 @@ import com.example.projectv1.entity.Project;
 public class ProjectServiceImpl implements ProjectService {
 	
 	private ProjectRepositoryDAO projectRepositoryDAO;
+	private ProjectDAOImpl projectDAOImpl;
 	
 	@Autowired
-	public ProjectServiceImpl(ProjectRepositoryDAO projectRepositoryDAO) {
+	public ProjectServiceImpl(ProjectRepositoryDAO projectRepositoryDAO, ProjectDAOImpl projectDAOImpl) {
 		super();
 		this.projectRepositoryDAO = projectRepositoryDAO;
+		this.projectDAOImpl = projectDAOImpl;
 	}
-
+	
 	@Override
 	public List<Project> findAll() {
 		// TODO Auto-generated method stub
@@ -50,6 +54,12 @@ public class ProjectServiceImpl implements ProjectService {
 	public List<Project> searchBy(String theName) {
 		// TODO Auto-generated method stub
 		return projectRepositoryDAO.findByNameContainsAllIgnoreCase(theName);	
+	}
+
+	@Override
+	public List<User> findAllManager() {
+		// TODO Auto-generated method stub
+		return projectDAOImpl.findAllManager();
 	}
 
 }

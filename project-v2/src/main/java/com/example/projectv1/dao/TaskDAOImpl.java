@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.projectv1.entity.Task;
+import com.example.projectv1.entity.User;
 import com.example.projectv1.entity.UserAccount;
 
 @Repository
@@ -73,12 +74,22 @@ public class TaskDAOImpl implements TaskDAO {
 	
 	
 	
-	
-	
-	
-	
-	
-	
+	@Override
+	public List<User> findAllTeamLeader() {
+		Session session = entityManager.unwrap(Session.class);
+		String select = "SELECT ua FROM User ua WHERE ua.roleId=:roleId";
+		List<User> users = null;
+		Query query = entityManager.createQuery(select);
+		query.setParameter("roleId", 2);
+
+		try {
+
+			users = query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+		return users;
+	}
 	
 
 }

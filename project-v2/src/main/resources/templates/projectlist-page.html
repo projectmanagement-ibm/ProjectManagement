@@ -66,6 +66,11 @@
 							<p>Tasks</p>
 					</a></li>
 
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{/subtasks/list}"> <i class="material-icons">content_paste</i>
+							<p>Subtasks</p>
+					</a></li>
+
 				</ul>
 			</div>
 		</div>
@@ -73,8 +78,8 @@
 
 			<div class="content">
 				<div class="container-fluid">
-					<a th:href="@{/projects/addproject}" class="btn btn-primary btn-round btn-lg">Add
-						Project </a>
+					<a th:href="@{/projects/addproject}"
+						class="btn btn-primary btn-round btn-lg">Add Project </a>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -97,9 +102,11 @@
 
 												<tr th:each="tempProject : ${projectList}">
 
-													<td> <a th:href="@{/tasks/findByProjectId(id=${tempProject.id})}" th:text="${tempProject.name}"></a></td>
+													<td><a
+														th:href="@{/tasks/findByProjectId(id=${tempProject.id})}"
+														th:text="${tempProject.name}"></a></td>
 													<td th:text="${tempProject.projectDescription}" />
-													
+
 													<td th:text="${tempProject.startDate}" />
 													<td th:text="${tempProject.endDate}" />
 													<td th:text="${tempProject.status}" />

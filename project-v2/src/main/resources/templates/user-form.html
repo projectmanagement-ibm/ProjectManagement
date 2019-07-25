@@ -50,36 +50,28 @@
 					class="simple-text logo-normal"> Creative Tim </a>
 			</div>
 			<div class="sidebar-wrapper">
-         <ul class="nav">
-           <li class="nav-item active  ">
-             <a class="nav-link" th:href="@{/dashboard}">
-               <i class="material-icons">dashboard</i>
-               <p>Dashboard</p>
-             </a>
-           </li>
-           <li class="nav-item ">
-             <a class="nav-link" th:href="@{/users/list}">
-               <i class="material-icons">person</i>
-               <p>Users</p>
-             </a>
-           </li>
-   
-           <li class="nav-item ">
-             <a class="nav-link"th:href="@{/projects/list}">
-               <i class="material-icons">library_books</i>
-               <p>Projects</p>
-             </a>
-           </li>
-           
-           <li class="nav-item ">
-             <a class="nav-link" th:href="@{/tasks/list}">
-               <i class="material-icons">content_paste</i>
-               <p>Tasks</p>
-             </a>
-           </li>
+				<ul class="nav">
+					<li class="nav-item active  "><a class="nav-link"
+						th:href="@{/dashboard}"> <i class="material-icons">dashboard</i>
+							<p>Dashboard</p>
+					</a></li>
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{/users/list}"> <i class="material-icons">person</i>
+							<p>Users</p>
+					</a></li>
 
-         </ul>
-       </div>
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{/projects/list}"> <i class="material-icons">library_books</i>
+							<p>Projects</p>
+					</a></li>
+
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{/tasks/list}"> <i class="material-icons">content_paste</i>
+							<p>Tasks</p>
+					</a></li>
+
+				</ul>
+			</div>
 		</div>
 		<div class="main-panel">
 			<!-- Navbar -->
@@ -200,9 +192,20 @@
 													required>
 											</div>
 										</div>
+
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="bmd-label-floating">Role</label> <select
+													th:field="*{roleId}" class="form-control" required>
+													<option th:each="role : ${roles}" th:value="${role.roleId}"
+														th:text="${role.roleName}"></option>
+												</select>
+
+											</div>
+										</div>
 								</div>
 								<button type="submit" class="btn btn-primary pull-right">Submit
-									</button>
+								</button>
 								<div class="clearfix"></div>
 								</form>
 							</div>
@@ -210,7 +213,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>s
 		<footer class="footer">
 			<div class="container-fluid">
 				<nav class="float-left">
