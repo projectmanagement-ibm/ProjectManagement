@@ -1,0 +1,64 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <button mat-raised-button (click)="onAddUser()"  type="button" class="btn btn-danger pull-left">
+      Add User
+    </button>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div style="background-color: darkblue !important" class="card-header">
+            <h4 class="card-title ">Simple Table</h4>
+            <p class="card-category"> Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-darkBlue">
+                <th>
+                  ID
+                </th>
+                <th>
+                  First Name
+                </th>
+                <th>
+                  Last Name
+                </th>
+                <th>
+                 Contact
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Address
+                </th>
+                <th>
+                  Action
+                </th>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.firstName }}</td>
+                  <td>{{ user.lastName }}</td>
+                  <td>{{ user.contact }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.address }}</td>
+                  <td class="td-actions text-right">
+                    <button (click)="onEdit(user)" mat-raised-button type="button" matTooltip="Edit User" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button (click)="onRemove(user)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">close</i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
