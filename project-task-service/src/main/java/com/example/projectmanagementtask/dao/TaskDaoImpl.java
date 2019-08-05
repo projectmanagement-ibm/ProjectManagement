@@ -10,8 +10,11 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.User;
+import com.example.projectmanagementtask.entity.Role;
 import com.example.projectmanagementtask.entity.Task;
+import com.example.projectmanagementtask.entity.UserAccount;
+
+
 
 @Repository
 public class TaskDaoImpl implements TaskDao {
@@ -69,18 +72,26 @@ public class TaskDaoImpl implements TaskDao {
 			return null;
 		}
 		return taskList;
-		
 	}
 	
-	
+
 	
 	@Override
-	public List<User> findAllTeamLeader() {
+	public List<UserAccount> findAllTeamLeader() {
 		Session session = entityManager.unwrap(Session.class);
-		String select = "SELECT ua FROM User ua WHERE ua.roleId=:roleId";
-		List<User> users = null;
+		Role teamLeader = null;
+		String selectManager  = "select manager FROM Role manager WHERE manager.roleName=:roleName";
+
+		String selectTeamLeader  = "select tl FROM Role tl WHERE tl.roleName=:roleName";
+		Query query1 = entityManager.createQuery(selectManager);
+		query1.setParameter("roleName", "team leader");
+		teamLeader =  (Role) query1.getSingleResult();
+//		
+		
+		String select = "SELECT ua FROM UserAccount ua WHERE ua.roleId=:roleId";
+		List<UserAccount> users = null;
 		Query query = entityManager.createQuery(select);
-		query.setParameter("roleId", 2);
+		query.setParameter("roleId", teamLeader.getRoleId());
 
 		try {
 
@@ -89,6 +100,27 @@ public class TaskDaoImpl implements TaskDao {
 			return null;
 		}
 		return users;
+	}
+	
+	
+	@Override
+	public List<Task> findTaskByUserId(int id) {
+		// TODO Auto-generated method stub
+		List<Task> tasks = null; 
+		Session session = entityManager.unwrap(Session.class);
+		
+		String select  = "select tasks FROM Task tasks WHERE tasks.userId=:userId";
+		Query query = entityManager.createQuery(select);
+		query.setParameter("userId", id);
+		try {
+
+			tasks = query.getResultList();
+			
+		} catch (Exception e) {
+			System.out.println("error======" + e);
+			return null;
+		}
+		return tasks;
 	}
 
 }

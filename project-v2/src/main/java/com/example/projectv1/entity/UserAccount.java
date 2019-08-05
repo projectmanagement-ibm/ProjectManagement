@@ -99,6 +99,4 @@ public class UserAccount implements Serializable {
 		this.roleId = roleId;
 	}
 
-	
-	
 }

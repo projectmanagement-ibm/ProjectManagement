@@ -3,8 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.management.relation.Role;
-
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 
 public interface UserService {
@@ -23,6 +22,6 @@ public interface UserService {
 	List<Role> findAllRole();
 
 
-//	public List<User> searchByName(String theFirstName, String theLastName);
+    //public List<User> searchByName(String theFirstName, String theLastName);
 
 }

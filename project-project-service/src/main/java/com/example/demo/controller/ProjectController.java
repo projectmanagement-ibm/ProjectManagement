@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Project;
+import com.example.demo.entity.User;
+import com.example.demo.entity.UserAccount;
 import com.example.demo.service.ProjectService;
-
-
 
 
 @RestController
@@ -36,14 +36,24 @@ public class ProjectController {
 	public ProjectController(ProjectService projectService) {
 		super();
 		this.projectService = projectService;
-	}
+	}	
 	
 	@GetMapping("/projects")
 	public List<Project> showProject(Model theModel)
 	{
 		return projectService.findAll();
 	}
+	
+	@GetMapping("/projects/{id}")
+	public Project findById(@PathVariable int id)
+	{
+		return projectService.findById(id);
+	}
 
+	@GetMapping("/projects/getProjects/{id}")
+	public List<Project> findProjectByUserId(@PathVariable int id) {
+		return projectService.findProjectByUserId(id);
+	}
   
 	@PostMapping("/projects")
 	public String save(@RequestBody Project project)
@@ -71,6 +81,12 @@ public class ProjectController {
 		return "Project deleted successfully";
 		
 	}
+	
+	@GetMapping("/projects/managers")
+	List<UserAccount> findAllManager() {
+		return this.projectService.findAllManager();
+	}
+	
 //	@GetMapping("/search")
 //	public String search(@RequestParam("name") String theName,
 //						 Model theModel) {

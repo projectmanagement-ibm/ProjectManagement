@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.example.demo.entity.Project;
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserAccount;
 
 
 public interface ProjectService {
@@ -16,10 +17,13 @@ public interface ProjectService {
 
 	public void deleteById(int id);
 
-	public Optional<Project> findById(int id);
+	public Project findById(int id);
 
 	public List<Project> searchBy(String theName);
 
-	public List<User> findAllManager();
+	public List<UserAccount> findAllManager();
+	
+	public List<Project> findProjectByUserId(int id);
+
 
 }

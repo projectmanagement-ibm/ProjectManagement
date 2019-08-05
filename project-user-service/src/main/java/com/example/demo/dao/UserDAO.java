@@ -2,8 +2,7 @@ package com.example.demo.dao;
 
 import java.util.List;
 
-import javax.management.relation.Role;
-
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 
 public interface UserDAO {

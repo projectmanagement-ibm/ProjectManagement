@@ -3,8 +3,6 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.management.relation.Role;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
@@ -66,26 +65,19 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/search")
-	public String search(@RequestParam("firstName") String theFirstName,
-						 Model theModel) {
+	@GetMapping("/users/roles")
+	public List<Role> findAllRoles(){
+		return this.userService.findAllRole();
+	}
+	
+	@GetMapping("/users/search/{theFirstName}")
+	public List<User> search(@PathVariable String theFirstName) {
 		
-		// check names, if both are empty then just give list of all employees
-
-		if (theFirstName.trim().isEmpty()) {
-			return "redirect:/employees/list";
-		}
-		else {
-			// else, search by first name and last name
-			List<User> userList =
-							userService.findByFirstName(theFirstName);
-			
-			// add to the spring model
-			theModel.addAttribute("userList", userList);
+			List<User> userList = userService.findByFirstName(theFirstName);
 			
 			// send to list-employees
-			return "user-list";
+			return userList;
 		}
 		
 	}
-}
+

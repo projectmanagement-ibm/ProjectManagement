@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.projectmanagementtask.entity.Task;
+import com.example.projectmanagementtask.entity.UserAccount;
 import com.example.projectmanagementtask.service.TaskService;
 
 
@@ -66,12 +67,25 @@ public class TaskController {
 		return "Task Deleted";
 	}
 
-//	@GetMapping("/tasks")
-//	public String findByProjectId(@RequestParam("id") int id, Model theModel) {
-//		theModel.addAttribute("taskList", taskService.findByProjectId(id));
-//		theModel.addAttribute("pId", id);
-//		return "task-list";
-//
-//	}
+	@GetMapping("/tasks/{id}")
+	public Task findById(@PathVariable int id) {
+		return taskService.findById(id);
+	}
+	
+	@GetMapping("/tasks/getTasksByProjectId/{id}")
+	public List<Task> findByProjectId(@PathVariable int id) {
+		return taskService.findByProjectId(id);
+
+	}
+	
+	@GetMapping("/tasks/teamLeaders")
+	public List<UserAccount> findAllTeamLeaders() {
+		return taskService.findAllTeamLeader();
+	}
+	
+	@GetMapping("/tasks/getTasksByUserId/{id}")
+	public List<Task> findProjectByUserId(@PathVariable int id) {
+		return taskService.findTaskByUserId(id);
+	}
 
 }

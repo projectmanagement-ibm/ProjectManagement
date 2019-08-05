@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.entity.SubTask;
+import com.example.demo.entity.UserAccount;
 
 public interface SubTaskService {
 
@@ -12,6 +13,13 @@ public interface SubTaskService {
 	public Optional<SubTask> getById(int id);
 	public void deleteById(int id);
 	
+	List<UserAccount> findAllDeveloper();
+
+	SubTask findById(int id);
+
+	List<SubTask> findByTaskId(int id);
+
+	List<SubTask> findSubTaskByUserId(int id);
 	
 	
 }

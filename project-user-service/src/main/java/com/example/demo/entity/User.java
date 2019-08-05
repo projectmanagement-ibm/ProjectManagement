@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="user")
@@ -37,7 +39,10 @@ public class User implements Serializable {
 	@Column(name="address")
 	private String address;
 	
+	@Column(name="date_of_birth")
+	private Date dob;
 	
+	@Transient
 	private int roleId;
 
 	public User() {
@@ -45,7 +50,7 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String firstName, String lastName, long contact, String email, String address, int roleId) {
+	public User(String firstName, String lastName, long contact, String email, String address, int roleId, Date dob) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -53,12 +58,13 @@ public class User implements Serializable {
 		this.email = email;
 		this.address = address;
 		this.roleId = roleId;
+		this.dob = dob;
 	}
 	
 	
 	
 
-	public User(int id, String firstName, String lastName, long contact, String email, String address, int roleId) {
+	public User(int id, String firstName, String lastName, long contact, String email, String address, int roleId, Date dob) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -67,6 +73,15 @@ public class User implements Serializable {
 		this.email = email;
 		this.address = address;
 		this.roleId = roleId;
+		this.dob = dob;
+	}
+	
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 	public int getId() {

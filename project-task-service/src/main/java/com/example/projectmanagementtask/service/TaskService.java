@@ -2,8 +2,8 @@ package com.example.projectmanagementtask.service;
 
 import java.util.List;
 
-import com.example.demo.entity.User;
 import com.example.projectmanagementtask.entity.Task;
+import com.example.projectmanagementtask.entity.UserAccount;
 
 
 public interface TaskService {
@@ -18,6 +18,8 @@ public List<Task> findAll();
 	
 	List<Task> findByProjectId(int id);
 	
-	List<User> findAllTeamLeader();
+	List<UserAccount> findAllTeamLeader();
+	List<Task> findTaskByUserId(int id);
+
 
 }

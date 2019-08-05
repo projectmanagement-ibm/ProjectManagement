@@ -7,9 +7,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.User;
 import com.example.projectmanagementtask.dao.TaskDao;
 import com.example.projectmanagementtask.entity.Task;
+import com.example.projectmanagementtask.entity.UserAccount;
 
 
 @Service
@@ -59,10 +59,15 @@ public class TaskServiceImpl implements TaskService{
 	}
 
 	@Override
-	public List<User> findAllTeamLeader() {
+	public List<UserAccount> findAllTeamLeader() {
 		// TODO Auto-generated method stub
 		return taskDAO.findAllTeamLeader();
 	}
-	
+
+	@Override
+	public List<Task> findTaskByUserId(int id) {
+		// TODO Auto-generated method stub
+		return taskDAO.findTaskByUserId(id);
+	}
 
 }

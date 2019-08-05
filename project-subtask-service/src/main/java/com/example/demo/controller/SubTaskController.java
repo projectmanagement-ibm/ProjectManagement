@@ -16,6 +16,7 @@ import com.example.demo.entity.SubTask;
 import com.example.demo.service.SubTaskService;
 
 
+
 @RestController
 @RequestMapping("/api")
 public class SubTaskController {
@@ -51,20 +52,36 @@ public class SubTaskController {
 		return ResponseEntity.ok().body("SubTask Created..");
 	}
 	
-	@GetMapping("/subtasks/{id}")
-	public Optional<SubTask> getById(@PathVariable int id)
-	{ 
-		Optional<SubTask> subtask= service.getById(id);
-		if(subtask==null)
-			throw new RuntimeException("Id not found");
-		return subtask;
+	
+	
+    @GetMapping("/subtasks/{id}")
+	public SubTask findById(@PathVariable int id) {
+		return service.findById(id);
 	}
+	
+	@GetMapping("/subtasks/getByTaskId/{id}")
+	public List<SubTask> findByTaskId(@PathVariable int id) {
+		return service.findByTaskId(id);
+
+	}
+	
+	@GetMapping("/subtasks/developers")
+	public List<com.example.demo.entity.UserAccount> findAllTeamLeaders() {
+		return service.findAllDeveloper();
+	}
+	
+	@GetMapping("/subtasks/getByUserId/{id}")
+	public List<SubTask> findSubTaskByUserId(@PathVariable int id) {
+		return service.findSubTaskByUserId(id);
+	}
+
 	
 	@DeleteMapping("/subtasks/{id}")
 	public ResponseEntity<?> deleteSubTask(@PathVariable int id) {
 		service.deleteById(id);
 		return ResponseEntity.ok().body("Subtask deleted successfully");
 	}
+	
 	@PutMapping("/subtasks")
 	public ResponseEntity<?> updateSubTask(@RequestBody SubTask subtask){
 		service.createSubTask(subtask);

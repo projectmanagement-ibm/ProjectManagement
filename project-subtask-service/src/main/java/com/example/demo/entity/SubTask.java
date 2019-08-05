@@ -29,8 +29,7 @@ public class SubTask implements Serializable {
 	private Date startDate;
 	@Column(name = "end_date")
 	private Date endDate;
-	@Column(name = "project_id")
-	private int projectId;
+	
 	@Column(name = "task_id")
 	private int taskId;
 	@Column(name = "user_id")
@@ -97,13 +96,6 @@ public class SubTask implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public int getProjectId() {
-		return projectId;
-	}
-
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
-	}
 
 	public int getTaskId() {
 		return taskId;

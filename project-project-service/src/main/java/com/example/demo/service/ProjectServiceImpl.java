@@ -10,6 +10,7 @@ import com.example.demo.dao.ProjectDAOImpl;
 import com.example.demo.dao.ProjectRepositoryDAO;
 import com.example.demo.entity.Project;
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserAccount;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -43,9 +44,9 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Optional<Project> findById(int id) {
+	public Project findById(int id) {
 		// TODO Auto-generated method stub
-		return projectRepositoryDAO.findById(id);
+		return projectRepositoryDAO.findById(id).get();
 	}
 
 	@Override
@@ -55,9 +56,16 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public List<User> findAllManager() {
+	public List<UserAccount> findAllManager() {
 		// TODO Auto-generated method stub
 		return projectDAOImpl.findAllManager();
+	}
+
+	@Override
+	public List<Project> findProjectByUserId(int id) {
+		// TODO Auto-generated method stub
+		return projectDAOImpl.findProjectByUserId(id);
+		
 	}
 
 }
