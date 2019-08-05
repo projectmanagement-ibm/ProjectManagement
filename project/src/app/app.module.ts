@@ -22,20 +22,37 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { UserListComponent } from './Users/user-list/user-list.component';
 import {UsersService} from './services/users.service';
-import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
-import { ProjectListComponent } from './projects/project-list/project-list.component';
-import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
-import { SubtaskDetailComponent } from './subtasks/subtask-detail/subtask-detail.component';
-import { SubtaskListComponent } from './subtasks/subtask-list/subtask-list.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
 import {ProjectService} from './services/project.service';
 import {TaskService} from './services/task.service';
 import {SubtaskService} from './services/subtask.service';
+import {LoginService} from './services/login.service';
+
+import {LoginComponent} from './login/login.component';
+
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatRippleModule,
+  MatFormFieldModule,
+  MatTooltipModule,
+  MatSelectModule, MatNativeDateModule, MatDatepickerModule
+} from '@angular/material';
+import {AuthService} from './services/auth.service';
+import {AuthGuard} from './auth.guard';
+import { TestComponent } from './test/test.component';
+
 
 @NgModule({
   imports: [
+    MatButtonModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatTooltipModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -50,14 +67,17 @@ import {SubtaskService} from './services/subtask.service';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-
+    LoginComponent,
+    TestComponent,
 
   ],
   providers: [
       UsersService,
       ProjectService,
       TaskService,
-      SubtaskService
+      SubtaskService,
+      LoginService,
+    AuthService, AuthGuard
   ],
   bootstrap: [AppComponent]
 })

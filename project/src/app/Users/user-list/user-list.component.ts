@@ -11,6 +11,10 @@ import {User} from '../../models/user.model';
 export class UserListComponent implements OnInit {
 
   users: User[];
+  searchedUsers: User[];
+  searchedString: String;
+    p: number;
+    filter: string;
   constructor(
       private usersService: UsersService,
       private router: Router,
@@ -46,6 +50,14 @@ export class UserListComponent implements OnInit {
           .subscribe(response => {
               console.log('response on delete', response);
               this.getUsers();
+          })
+  }
+
+  onSearch(fName) {
+      console.log('search=====', fName);
+      this.usersService.getByName(fName)
+          .subscribe(response => {
+              this.searchedUsers = response.json();
           })
   }
 }

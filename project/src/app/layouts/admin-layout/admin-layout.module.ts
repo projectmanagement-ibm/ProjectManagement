@@ -26,8 +26,14 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
   MatSelectModule
 } from '@angular/material';
+import {AuthService} from '../../services/auth.service';
+import {AuthGuard} from '../../auth.guard';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 @NgModule({
   imports: [
@@ -41,6 +47,9 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxPaginationModule, Ng2SearchPipeModule
   ],
   declarations: [
     DashboardComponent,
@@ -58,7 +67,8 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-  ]
+  ],
+  providers: [AuthService, AuthGuard, MatDatepickerModule ]
 })
 
 export class AdminLayoutModule {}

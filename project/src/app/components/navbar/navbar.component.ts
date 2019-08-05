@@ -46,8 +46,8 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = true;
     };
     sidebarClose() {
-        const body = document.getElementsByTagName('body')[0];
-        this.toggleButton.classList.remove('toggled');
+      const body = document.getElementsByTagName('body')[0];
+       this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         body.classList.remove('nav-open');
     };
@@ -121,5 +121,14 @@ export class NavbarComponent implements OnInit {
           }
       }
       return 'Dashboard';
+    }
+
+    onLogout() {
+        localStorage.removeItem('LoggedInUser');
+        localStorage.removeItem('role');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('projectId');
+        localStorage.removeItem('taskId');
+        this.router.navigate(['/']);
     }
 }

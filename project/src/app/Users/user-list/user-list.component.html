@@ -1,22 +1,27 @@
 <div class="main-content">
   <div class="container-fluid">
-    <button mat-raised-button (click)="onAddUser()"  type="button" class="btn btn-danger pull-left">
-      Add User
-    </button>
+
     <div class="row">
       <div class="col-md-12">
+
+        <button mat-raised-button (click)="onAddUser()"  type="button" class="btn btn-danger pull-left">
+          Add User
+        </button>
+
+            <div class="conatiner" style="padding-top:20px;">
+                <div class="col-sm-5" style="padding-top:20px;padding-bottom:20px;" >
+                    <input class="form-control" type="text" placeholder="Search......." [(ngModel)]="filter">
+                </div>
+            </div>
         <div class="card">
           <div style="background-color: darkblue !important" class="card-header">
-            <h4 class="card-title ">Simple Table</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
+            <h4 style="color:white" class="card-title ">Users</h4>
+            <p></p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
                 <thead class="text-darkBlue">
-                <th>
-                  ID
-                </th>
                 <th>
                   First Name
                 </th>
@@ -36,9 +41,8 @@
                   Action
                 </th>
                 </thead>
-                <tbody>
-                <tr *ngFor="let user of users">
-                  <td>{{ user.id }}</td>
+                <tbody *ngIf="users">
+                <tr *ngFor="let user of users |filter:filter| paginate: { itemsPerPage: 6, currentPage: p }">
                   <td>{{ user.firstName }}</td>
                   <td>{{ user.lastName }}</td>
                   <td>{{ user.contact }}</td>
@@ -55,6 +59,9 @@
                 </tr>
                 </tbody>
               </table>
+              <ul class="pagination">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </ul>
             </div>
           </div>
         </div>

@@ -1,3 +1,107 @@
-<p>
-  subtask-detail works!
-</p>
+<div ng-app="myApp" class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div style="background-color: darkblue !important" class="card-header">
+            <h4 class="card-title" style="color: white">Sub Task</h4>
+
+          </div>
+          <div class="card-body">
+            <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" novalidate>
+
+
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Task Name" type="text" formControlName="name"
+                         [(ngModel)]="name">
+                  <mat-error
+                          *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+                    must be atleast 3 characters.
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Task Description" type="text"
+                         formControlName="description" [(ngModel)]="description">
+                  <mat-error
+                          *ngIf="!formGroup.controls['description'].valid && formGroup.controls['description'].touched">
+                    Please add some description
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
+                         placeholder="Start date" formControlName="startDate" [(ngModel)]="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error
+                          *ngIf="!formGroup.controls['startDate'].valid && formGroup.controls['startDate'].touched">
+                    choose valid Date
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input matInput [min]="minDate1" [max]="maxDate1" [matDatepicker]="picker1"
+                         placeholder="End date" formControlName="endDate" [(ngModel)]="endDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                  <mat-error
+                          *ngIf="!formGroup.controls['endDate'].valid && formGroup.controls['endDate'].touched">
+                    choose valid Date
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div class="col-md-12">
+                <mat-form-field>
+                  <mat-label>Assigned To</mat-label>
+                  <mat-select formControlName="userId">
+                    <mat-option *ngFor="let developer of developers" [value]="developer.userId">
+                      {{developer.username}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-12">
+                <mat-form-field>
+                  <mat-label>Task Status</mat-label>
+                  <mat-select formControlName="status">
+                    <mat-option value="Pending">
+                      Pending
+                    </mat-option>
+                    <mat-option value="Complete">
+                      Completed
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                          *ngIf="!formGroup.controls['status'].valid && formGroup.controls['status'].touched">
+                    project status...Required!!
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+
+              <div *ngIf="!isUpdate">
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                        [disabled]="!formGroup.valid">Add Task</button>
+              </div>
+              <div *ngIf="isUpdate">
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                        [disabled]="!formGroup.valid">Update Profile</button>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

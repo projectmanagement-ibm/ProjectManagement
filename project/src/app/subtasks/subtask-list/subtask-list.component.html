@@ -1,3 +1,91 @@
-<p>
-  subtask-list works!
-</p>
+<div class="main-content">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <button mat-raised-button (click)="onAddSubtask()"  type="button" class="btn btn-danger pull-left">
+          Add Sub Task
+        </button>
+        <div class="card">
+          <div style="background-color: darkblue !important" class="card-header">
+            <h4 class="card-title " style="color: white">Sub Task List</h4>
+            <p></p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-darkBlue">
+
+                <th>
+                  Sub Tasks
+                </th>
+                <th>
+                  Description
+                </th>
+                <th>
+                  Start Date
+                </th>
+                <th>
+                  End Date
+                </th>
+                <th>
+                  Status
+                </th>
+                <th>
+                  Action
+                </th>
+                </thead>
+                <tbody *ngIf="subtasks">
+                <tr *ngFor="let subtask of subtasks">
+                  <td>{{ subtask.id }}</td>
+                  <td>{{ subtask.name }}</td>
+                  <td>{{ subtask.description }}</td>
+                  <td>{{ subtask.startDate }}</td>
+                  <td>{{ subtask.endDate }}</td>
+                  <td>{{ subtask.status }}</td>
+                </tr>
+                </tbody>
+
+                <tbody *ngIf="taskSubtasks">
+                <tr *ngFor="let subtask of taskSubtasks">
+                  <td>{{ subtask.id }}</td>
+                  <td>{{ subtask.name }}</td>
+                  <td>{{ subtask.description }}</td>
+                  <td>{{ subtask.startDate }}</td>
+                  <td>{{ subtask.endDate }}</td>
+                  <td>{{ subtask.status }}</td>
+                  <td class="td-actions text-right">
+                    <button (click)="onEdit(subtask)" mat-raised-button type="button" matTooltip="Edit User" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button (click)="onRemove(subtask)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">close</i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+
+                <tbody *ngIf="developerSubtasks">
+                <tr *ngFor="let subtask of developerSubtasks">
+                  <td><a href="#">{{ subtask.id }}</a></td>
+                  <td>{{ subtask.name }}</td>
+                  <td>{{ subtask.description }}</td>
+                  <td>{{ subtask.startDate }}</td>
+                  <td>{{ subtask.endDate }}</td>
+                  <td>{{ subtask.status }}</td>
+                  <td class="td-actions text-right">
+                    <button (click)="onEdit(subtask)" mat-raised-button type="button" matTooltip="Edit User" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">edit</i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

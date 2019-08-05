@@ -25,6 +25,7 @@ export class UserProfileComponent implements OnInit {
   email: String;
   address: String;
   isUpdate = false;
+  roles: any[];
 
   constructor(
       private formBuilder: FormBuilder,
@@ -32,28 +33,36 @@ export class UserProfileComponent implements OnInit {
       private router: Router,
       private activatedRoute: ActivatedRoute,
               ) {
+      this.usersService.getRoles()
+          .subscribe(response => {
+              this.roles  =  response.json();
+              console.log('roles', this.roles);
+          })
 
       this.activatedRoute.url.subscribe((s: UrlSegment[]) => {
-          console.log('url', s[1].path);
-          // tslint:disable-next-line:radix
-          this.id = parseInt(s[1].path);
-          console.log('id=====', this.id);
-          if (this.id > 0) {
-              console.log('at line 422222');
-              this.isUpdate = true;
-              this.usersService.getUserById(this.id)
-                  .subscribe(response => {
-                      this.user = response.json();
-                      if (this.user) {
-                          this.userId = this.user.id,
-                          this.firstName = this.user.firstName;
-                          this.lastName = this.user.lastName;
-                          this.contact = this.user.contact;
-                          this.email = this.user.email;
-                          this.address = this.user.address;
-                          console.log('user at 32', this.user);
-                      }
-                  })
+          if (s[1]) {
+              // tslint:disable-next-line:radix
+              this.id = parseInt(s[1].path);
+
+              console.log('id=====', this.id);
+
+              if (this.id > 0) {
+                  console.log('at line 422222');
+                  this.isUpdate = true;
+                  this.usersService.getUserById(this.id)
+                      .subscribe(response => {
+                          this.user = response.json();
+                          if (this.user) {
+                              this.userId = this.user.id,
+                                  this.firstName = this.user.firstName;
+                              this.lastName = this.user.lastName;
+                              this.contact = this.user.contact;
+                              this.email = this.user.email;
+                              this.address = this.user.address;
+                              console.log('user at 32', this.user);
+                          }
+                      })
+              }
           }
       })
       }
@@ -72,13 +81,11 @@ export class UserProfileComponent implements OnInit {
           Validators.required,
           Validators.pattern(name),
           Validators.minLength(3),
-          Validators.maxLength(15)
       ]],
       'lastName': [null,
           [Validators.required,
           Validators.pattern(name),
           Validators.minLength(3),
-          Validators.maxLength(15)
       ]],
       'contact': [null, [Validators.required,
           Validators.minLength(10),
@@ -89,8 +96,10 @@ export class UserProfileComponent implements OnInit {
       ]],
       'address': [null, [Validators.required,
       Validators.minLength(3),
-      Validators.maxLength(50)
-     ]]
+      ]],
+        'roleId': [
+            null, [Validators.required]
+        ]
     })
   }
 
@@ -107,7 +116,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   createUser(user) {
-    user['roleId'] = 2;
     console.log('user at 111==', user);
     this.usersService.createUser(user)
         .subscribe(response => {

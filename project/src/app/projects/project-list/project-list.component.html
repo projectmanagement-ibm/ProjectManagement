@@ -1,3 +1,90 @@
-<p>
-  project-list works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <button *ngIf="projects" mat-raised-button (click)="onAddProject()"  type="button" class="btn btn-danger pull-left">
+          Add Project
+        </button>
+
+        <div class="conatiner" style="padding-top:20px;">
+          <div class="col-sm-5" style="padding-top:20px;padding-bottom:20px;" >
+            <input class="form-control" type="text" placeholder="Search......." [(ngModel)]="filter">
+          </div>
+        </div>
+        <div class="card">
+          <div style="background-color: darkblue !important" class="card-header">
+            <h4 class="card-title" style="background-color: darkblue !important" style="color:white ">Project</h4>
+            <p ></p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-darkBlue">
+                <th>
+                  Project Name
+                </th>
+                <th>
+                  Project Description
+                </th>
+                <th>
+                  Start Date
+                </th>
+                <th>
+                  Completion Date
+                </th>
+                <th>
+                  Status
+                </th>
+                <th>
+                  Action
+                </th>
+                </thead>
+
+                <tbody *ngIf="userProjects">
+                <tr  *ngFor="let project of userProjects">
+                  <td><a routerLink= "/projects/{{project.id}}">{{ project.name }}</a></td>
+                  <td>{{ project.projectDescription }}</td>
+                  <td>{{ project.startDate }}</td>
+                  <td>{{ project.endDate }}</td>
+                  <td>{{ project.status}}</td>
+                  <td class="td-actions text-right">
+                    <button (click)="onEdit(project)" mat-raised-button type="button" matTooltip="Edit Project" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">edit</i>
+                    </button>
+<!--                    <button (click)="onRemove(project)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">-->
+<!--                      <i class="material-icons">close</i>-->
+<!--                    </button>-->
+                  </td>
+                </tr>
+                </tbody>
+
+
+                <tbody *ngIf="projects">
+                <tr  *ngFor="let project of projects |filter:filter| paginate: { itemsPerPage: 6, currentPage: p }">
+                  <td><a style="color: darkblue !important;" routerLink= "/projects/{{project.id}}">{{ project.name }}</a></td>
+                  <td>{{ project.projectDescription }}</td>
+                  <td>{{ project.startDate }}</td>
+                  <td>{{ project.endDate }}</td>
+                  <td>{{ project.status}}</td>
+                  <td class="td-actions text-right">
+                    <button (click)="onEdit(project)" mat-raised-button type="button" matTooltip="Edit Project" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button (click)="onRemove(project)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons">close</i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <ul class="pagination">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
