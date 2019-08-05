@@ -32,9 +32,7 @@ public class UserDAOImpl implements UserDAO {
 		this.entityManager = entityManager;
 	}
 
-	 @Autowired
-	    private JavaMailSender javaMailSender;
-	 
+
 	@Override
 	public void save(User user) {
 		// TODO Auto-generated method stub
@@ -61,14 +59,6 @@ public class UserDAOImpl implements UserDAO {
 		userAccount.setRoleId(user.getRoleId());
 		session.save(userAccount);
 		
-		  SimpleMailMessage msg = new SimpleMailMessage();
-	        msg.setTo("bhupendrajanghel0110@gmail.com");
-
-	        msg.setSubject("UserName and Password");
-	        msg.setText("user Name :" +user.getEmail()+"\n Password: "+plainPassword);
-	        
-
-	        javaMailSender.send(msg);
 	}
 
 	@Override
