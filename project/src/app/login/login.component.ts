@@ -28,9 +28,11 @@ export class LoginComponent implements OnInit {
 
 
       this.isValid = true;
+      const emailRegex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       this.loginForm = this.formBuilder.group({
       'username': [null, [
           Validators.required,
+          Validators.pattern(emailRegex)
       ]],
       'password': [null, [
           Validators.required

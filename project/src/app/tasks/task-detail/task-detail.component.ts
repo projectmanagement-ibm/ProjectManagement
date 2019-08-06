@@ -31,7 +31,8 @@ export class TaskDetailComponent implements OnInit {
   minDate1 = new Date(2020, 0, 1);
   maxDate1 = new Date(2025, 0, 1);
   endPoint: String;
-  projectId: number;
+  projectId: any;
+  userId: any;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -82,6 +83,8 @@ export class TaskDetailComponent implements OnInit {
             this.startDate = this.task.startDate;
             this.endDate = this.task.endDate;
             this.status = this.task.status;
+            this.userId = this.task.userId;
+            this.projectId = this.task.projectId;
             console.log('task at 32', this.task);
           }
         })
@@ -158,5 +161,9 @@ export class TaskDetailComponent implements OnInit {
         }, error => {
           console.log('error', error);
         })
+  }
+
+  onClose() {
+    this.router.navigate(['/task-list']);
   }
 }

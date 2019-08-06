@@ -5,4 +5,6 @@ export class Task {
     startDate: Date;
     endDate: Date;
     status: String;
+    projectId: Number;
+    userId: Number;
 }

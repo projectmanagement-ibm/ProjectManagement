@@ -84,9 +84,6 @@
                     <mat-option value="Completed">
                       Completed
                     </mat-option>
-                    <mat-option value="Not Assigned">
-                      Not Assigned
-                    </mat-option>
                   </mat-select>
                   <mat-error *ngIf="!formGroup.controls['status'].valid && formGroup.controls['status'].touched">
                     Status of Project is Required
@@ -94,11 +91,14 @@
                 </mat-form-field>
               </div>
 
+              <div>
+                <button mat-raised-button (click)="onClose()" class="btn btn-danger pull-right">Cancel</button>
+              </div>
               <div *ngIf="!isUpdate">
-                <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="!formGroup.valid" >Add Project</button>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-left" [disabled]="!formGroup.valid" >Add Project</button>
               </div>
               <div *ngIf="isUpdate">
-                <button mat-raised-button type="submit" class="btn btn-danger pull-right"  [disabled]="!formGroup.valid">Update Project</button>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-left"  [disabled]="!formGroup.valid">Update Project</button>
               </div>
               <div class="clearfix"></div>
             </form>

@@ -16,11 +16,11 @@
 
                             <div>
                                 <mat-form-field class="example-full-width">
-                                    <input  matInput placeholder="Username" type="text"
+                                    <input  matInput placeholder="Email" type="text"
                                            formControlName="username">
                                 </mat-form-field>
                                 <mat-error *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
-                                    Required field.
+                                    Email required. Must be valid email.
                                 </mat-error>
 
                             </div>
@@ -31,7 +31,7 @@
                                 </mat-form-field>
                                 <mat-error *ngIf="!loginForm.controls['password'].valid
                                            && loginForm.controls['password'].touched">
-                                    Required field.
+                                    Password required.
                                 </mat-error>
                             </div>
 

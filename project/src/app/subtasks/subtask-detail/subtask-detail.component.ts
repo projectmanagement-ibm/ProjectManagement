@@ -160,4 +160,8 @@ export class SubtaskDetailComponent implements OnInit {
           console.log('error', error);
         })
   }
+
+  onClose() {
+    this.router.navigate(['/subtask-list']);
+  }
 }

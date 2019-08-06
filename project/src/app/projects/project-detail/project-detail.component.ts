@@ -156,4 +156,8 @@ export class ProjectDetailComponent implements OnInit {
           console.log('error', error);
         })
   }
+
+  onClose() {
+    this.router.navigate(['/project-list']);
+  }
 }

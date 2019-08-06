@@ -98,11 +98,15 @@
                 </mat-form-field>
               </div>
 
+              <div>
+                <button mat-raised-button (click)="onClose()" class="btn btn-danger pull-right">Cancel</button>
+              </div>
+
               <div *ngIf="!isUpdate">
-                <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="!formGroup.valid" >Add Task</button>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-left" [disabled]="!formGroup.valid" >Add Task</button>
               </div>
               <div *ngIf="isUpdate">
-                <button mat-raised-button type="submit" class="btn btn-danger pull-right"  [disabled]="!formGroup.valid">Update Task</button>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-left"  [disabled]="!formGroup.valid">Update Task</button>
               </div>
               <div class="clearfix"></div>
             </form>

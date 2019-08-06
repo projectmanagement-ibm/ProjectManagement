@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
+import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  url = 'http://localhost:8011/users-service/api/users'
+  url = 'http://localhost:8011/users-service/api/users';
+
+  headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*'); // create header object
+
   constructor(private http: Http) { }
 
   createUser(user: any) {

@@ -38,13 +38,20 @@ import {
   MatTooltipModule,
   MatSelectModule, MatNativeDateModule, MatDatepickerModule
 } from '@angular/material';
+
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './auth.guard';
 import { TestComponent } from './test/test.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 
 @NgModule({
   imports: [
+    MatCarouselModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
@@ -60,9 +67,14 @@ import { TestComponent } from './test/test.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+
+
   ],
   declarations: [
     AppComponent,

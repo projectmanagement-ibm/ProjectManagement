@@ -34,23 +34,24 @@ import {AuthService} from '../../services/auth.service';
 import {AuthGuard} from '../../auth.guard';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {CarouselModule} from "angular-bootstrap-md";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    NgxPaginationModule, Ng2SearchPipeModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatRippleModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatTooltipModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        NgxPaginationModule, Ng2SearchPipeModule, CarouselModule
+    ],
   declarations: [
     DashboardComponent,
     UserProfileComponent,
